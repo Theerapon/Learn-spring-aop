@@ -10,8 +10,17 @@ import org.springframework.stereotype.Component;
 public class MyDemoLoggingAspect {
 
 	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.*(..))")
-	private void forDaoPackage() {}
+	private void forDaoPackage() {} 
 	
+	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.get*(..))")
+	private void getter() {}
+	
+	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.set*(..))")
+	private void setter() {}
+	
+	@Pointcut("forDaoPackage() && !(getter() || setter())")
+	private void forDaoPackageNoGetterSetter() {}
+			
 //	@Before("execution(public void addAccount())")
 //	public void beforeAddAccountAdvice() {
 //		System.out.println("\n====>>> Executing @Before advice on addAccount()");
@@ -49,7 +58,12 @@ public class MyDemoLoggingAspect {
 //	}
 	
 	
-	@Before("forDaoPackage()")
+//	@Before("forDaoPackage()")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+//	}
+	
+	@Before("forDaoPackageNoGetterSetter()")
 	public void beforeAddAccountAdvice() {
 		System.out.println("\n====>>> Executing @Before advice on addAccount()");
 	}

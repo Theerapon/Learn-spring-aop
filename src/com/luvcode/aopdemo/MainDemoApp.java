@@ -20,6 +20,11 @@ public class MainDemoApp {
 		theAccountDAO.addAccount(myAccount, true);
 		theAccountDAO.doWork();
 		theAccountDAO.sleep();
+		theAccountDAO.setName("fakie");
+		theAccountDAO.getName();
+		theAccountDAO.setServiceCode("Code 7832");
+		theAccountDAO.getServiceCode();
+		
 		theMembershipDAO.addSillyMemner();
 		theMembershipDAO.addAccount();
 		
