@@ -1,13 +1,17 @@
 package com.luvcode.aopdemo;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.luv2code.aopdemo.dao.AccountDAO;
 import com.luv2code.aopdemo.dao.MembershipDAO;
+import com.luv2code.aopdemo.service.TrafficFortuneService;
 
 public class MainDemoApp {
+	
+	private static Logger myLogger = Logger.getLogger(MainDemoApp.class.getName());
 	
 	public static void main(String[] args) {
 		
@@ -18,6 +22,22 @@ public class MainDemoApp {
 		MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 		
 		
+//		textAfter(theAccountDAO, theMembershipDAO);
+		
+		
+		
+		TrafficFortuneService theFortuneService = context.getBean("trafficFortuneService", TrafficFortuneService.class);
+		
+		boolean tripWire = true;
+		String data =  theFortuneService.getFortune(tripWire);
+		myLogger.info("\nMy fortune is: " + data);
+		myLogger.info("Finished");
+		
+		context.close();
+		
+	}
+
+	private static void textAfter(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
 		boolean getTest = false;
 		if (getTest) {
 			test(theAccountDAO, theMembershipDAO);
@@ -26,21 +46,16 @@ public class MainDemoApp {
 			try {
 				boolean tripWire = true;
 				List<Account> theAccounts = theAccountDAO.findAccounts(tripWire);
-				System.out.println("\nMain Program: AfterReturningDemoApp");
+				myLogger.info("\nMain Program: AfterReturningDemoApp");
 				System.out.println(theAccounts);
 				
 			} catch (Exception exc) {
-				System.out.println("\n\nMain program ... caught exception: " + exc);
+				myLogger.info("\n\nMain program ... caught exception: " + exc);
 			}
 			
 			
 			
 		}
-		
-		
-		
-		context.close();
-		
 	}
 
 	private static void test(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
