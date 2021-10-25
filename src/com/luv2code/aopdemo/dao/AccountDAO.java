@@ -14,4 +14,13 @@ public class AccountDAO {
 	public void addAccount(Account theccount) {
 		System.out.println(getClass() + ": Doing my db work: adding an account with account");
 	}
+	
+	public boolean doWork() {
+		System.out.println(getClass() + ": Doing work");
+		return true;
+	}
+
+	public void sleep() {
+		System.out.println(getClass() + ": Doing sleep");
+	}
 }
