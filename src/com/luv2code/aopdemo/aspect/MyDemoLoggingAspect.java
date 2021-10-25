@@ -8,8 +8,33 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDemoLoggingAspect {
 
-	@Before("execution(public void addAccount())")
+//	@Before("execution(public void addAccount())")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+//	}
+	
+//	@Before("execution(public void add*())")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+//	}
+	
+//	@Before("execution(boolean add*())")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount() return boolean");
+//	}
+	
+	@Before("execution(* add*())")
 	public void beforeAddAccountAdvice() {
-		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+		System.out.println("\n====>>> Executing @Before advice on addAccount() return boolean");
 	}
+	
+//	@Before("execution(public void com.luv2code.aopdemo.dao.AccountDAO.addAccount())")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+//	}
+	
+//	@Before("execution(public void updateAccount())")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on updateAccount()");
+//	}
 }
