@@ -23,9 +23,20 @@ public class MyDemoLoggingAspect {
 //		System.out.println("\n====>>> Executing @Before advice on addAccount() return boolean");
 //	}
 	
-	@Before("execution(* add*())")
+//	@Before("execution(* add*())")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+//	}
+	
+	
+//	@Before("execution(* add*(com.luvcode.aopdemo.Account))")
+//	public void beforeAddAccountAdvice() {
+//		System.out.println("\n====>>> Executing @Before advice on addAccount()");
+//	}
+	
+	@Before("execution(* add*(com.luvcode.aopdemo.Account, ..))")
 	public void beforeAddAccountAdvice() {
-		System.out.println("\n====>>> Executing @Before advice on addAccount() return boolean");
+		System.out.println("\n====>>> Executing @Before advice on addAccount()");
 	}
 	
 //	@Before("execution(public void com.luv2code.aopdemo.dao.AccountDAO.addAccount())")
