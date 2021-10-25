@@ -1,5 +1,7 @@
 package com.luvcode.aopdemo;
 
+import java.util.List;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.luv2code.aopdemo.dao.AccountDAO;
@@ -15,6 +17,24 @@ public class MainDemoApp {
 		AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
 		MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
 		
+		
+		boolean getTest = false;
+		if (getTest) {
+			test(theAccountDAO, theMembershipDAO);
+		} else {
+			List<Account> theAccounts = theAccountDAO.findAccounts();
+			
+			System.out.println("\nMain Program: AfterReturningDemoApp");
+			System.out.println(theAccounts);
+		}
+		
+		
+		
+		context.close();
+		
+	}
+
+	private static void test(AccountDAO theAccountDAO, MembershipDAO theMembershipDAO) {
 		Account myAccount = new Account();
 		myAccount.setName("Fakie");
 		myAccount.setLevel("Platium");
@@ -30,8 +50,5 @@ public class MainDemoApp {
 		
 		theMembershipDAO.addSillyMemner();
 		theMembershipDAO.addAccount();
-		
-		context.close();
-		
 	}
 }
