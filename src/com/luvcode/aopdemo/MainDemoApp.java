@@ -22,10 +22,19 @@ public class MainDemoApp {
 		if (getTest) {
 			test(theAccountDAO, theMembershipDAO);
 		} else {
-			List<Account> theAccounts = theAccountDAO.findAccounts();
 			
-			System.out.println("\nMain Program: AfterReturningDemoApp");
-			System.out.println(theAccounts);
+			try {
+				boolean tripWire = true;
+				List<Account> theAccounts = theAccountDAO.findAccounts(tripWire);
+				System.out.println("\nMain Program: AfterReturningDemoApp");
+				System.out.println(theAccounts);
+				
+			} catch (Exception exc) {
+				System.out.println("\n\nMain program ... caught exception: " + exc);
+			}
+			
+			
+			
 		}
 		
 		

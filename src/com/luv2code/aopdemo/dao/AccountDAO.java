@@ -27,6 +27,25 @@ public class AccountDAO {
 		return myAccounts;
 	}
 	
+	public List<Account> findAccounts(boolean tripWire) {
+		
+		if (tripWire) {
+			throw new RuntimeException("No soup for you");
+		}
+		
+		List<Account> myAccounts = new ArrayList<>();
+		
+		Account temp1 = new Account("John", "Silver");
+		Account temp2 = new Account("Madhu", "Platinum");
+		Account temp3 = new Account("Luca", "Gold");
+		
+		myAccounts.add(temp1);
+		myAccounts.add(temp2);
+		myAccounts.add(temp3);
+		
+		return myAccounts;
+	}
+	
 	public void addAccount(Account theccount, boolean vipFlag) {
 		System.out.println(getClass() + ": Doing my db work: adding an account with account, boolean");
 	}
@@ -63,6 +82,5 @@ public class AccountDAO {
 		System.out.println(getClass() + ": Doing setServiceCode");
 		this.serviceCode = serviceCode;
 	}
-	
 	
 }
